@@ -22,6 +22,7 @@ public class GetBurningToursCommand implements ActionCommand {
         ArrayList<Tour> tours = tourService.getBurningTours();
 
         request.setAttribute(ATTR_TOURS, tours);
+        request.setAttribute("salo", request.getHeader("referer"));
         return page;
     }
 }

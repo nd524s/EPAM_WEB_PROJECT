@@ -32,8 +32,9 @@
 <div class="container">
   <h1 class="text-center"><fmt:message key="label.main"/></h1>
   <hr>
+  ${salo}
   <c:if test="${not empty tours}">
-    <h3 class="text-center"><fmt:message key="label.bernTour"/></h3>
+    <h3 class="text-center"><fmt:message key="label.burnTour"/></h3>
     <hr>
   </c:if>
     <c:forEach var="temp" items="${tours}" varStatus="number">

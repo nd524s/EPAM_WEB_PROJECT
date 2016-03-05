@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
  */
 public class ChangeLanguageCommand implements ActionCommand {
     private static final String PARAM_LANGUAGE = "language";
-    private static final String COMMAND = "getBurningTours";
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -18,6 +17,6 @@ public class ChangeLanguageCommand implements ActionCommand {
         String language = request.getParameter(PARAM_LANGUAGE);
         HttpSession session = request.getSession();
         session.setAttribute(PARAM_LANGUAGE, language);
-        return URLBuilder.buildFullURL(request.getRequestURL(), COMMAND);
+        return request.getHeader("referer");
     }
 }

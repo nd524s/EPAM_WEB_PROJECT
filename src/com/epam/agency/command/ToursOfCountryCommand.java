@@ -12,7 +12,8 @@ import java.util.ArrayList;
 /**
  * Created by Никита on 02.02.2016.
  */
-public class ToursOfCountryCommand implements ActionCommand {
+public class
+        ToursOfCountryCommand implements ActionCommand {
     private static final String PARAM_ID = "id";
     private static final String ATTR_WARNING = "warn";
     private static final String ATTR_TOURS = "tours";

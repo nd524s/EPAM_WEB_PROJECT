@@ -83,11 +83,11 @@ public class    ConnectionPool {
     }
 
     public ProxyConnection getConnection() throws ConnectionPoolException {
-        ProxyConnection proxyConnection;
+        ProxyConnection proxyConnection = null;
         try {
             proxyConnection = connectionQueue.take();
         } catch (InterruptedException e) {
-            throw new ConnectionPoolException("Getting from pool error", e);
+            logger.error("Getting from pool error", e);
         }
         return proxyConnection;
     }

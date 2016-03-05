@@ -65,7 +65,7 @@
       </div>
       <div class="col-md-2">
         <c:if test="${temp.orderStatus.statusName eq 'approved'}">
-          <form name="pay" action="jsp/user/ payPage.jsp" method="post">
+          <form name="pay" action="jsp/user/payPage.jsp" method="post">
             <input type="hidden" name="orderId" value="${temp.orderId}">
             <button class="btn btn-group-sm btn-info" type="submit"><fmt:message key="label.pay"/></button>
           </form>
