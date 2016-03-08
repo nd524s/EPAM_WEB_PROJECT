@@ -9,6 +9,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="ctg" uri="customtags" %>
 <c:if test="${sessionScope.language == null}">
   <fmt:setLocale value="ru_Ru"/>
 </c:if>
@@ -23,6 +24,7 @@
     <title><fmt:message key="title.user"/></title>
   <link rel="stylesheet" href="../../css/bootstrap.min.css">
   <link rel="stylesheet" href="../../css/sticky-footer-navbar.css">
+  <link rel="stylesheet" href="../../css/top-buffer.css">
 </head>
 <body>
 <c:import url="../header.jsp"></c:import>
@@ -47,9 +49,9 @@
     <li><strong><fmt:message key="label.discription"/></strong> <c:out value="${temp.tour.discription}" /></li>
     <li><strong><fmt:message key="label.operator"/></strong> <c:out value="${temp.tour.tourOperator.operatorName}" /></li>
     <li><strong><fmt:message key="label.orderDate"/></strong> <c:out value="${temp.orderDate}" /></li>
-    <li><strong><fmt:message key="label.itemNumber"/></strong> <c:out value="${temp.itemNumber}" /></li>
-    <li><strong><fmt:message key="label.status"/></strong> <c:out value="${temp.orderStatus.statusName}" /></li>
-    <div class="row">
+    <li><strong><fmt:message key="label.itemNumber"/></strong> <span class="badge"><c:out value="${temp.itemNumber}" /></span></li>
+    <li><strong><fmt:message key="label.status"/></strong> <ctg:status tourStatus="${temp.orderStatus.statusName}" /></li>
+    <div class="row top-buffer">
       <div class="col-md-2">
         <c:if test="${temp.orderStatus.statusName eq 'processed' || temp.orderStatus.statusName eq 'approved'}">
           <form name="cancelOrder" action="epam" method="post">
@@ -63,14 +65,14 @@
           </form>
         </c:if>
       </div>
-      <div class="col-md-2">
         <c:if test="${temp.orderStatus.statusName eq 'approved'}">
+          <div class="col-md-2 col-md-offset-3">
           <form name="pay" action="jsp/user/payPage.jsp" method="post">
             <input type="hidden" name="orderId" value="${temp.orderId}">
             <button class="btn btn-group-sm btn-info" type="submit"><fmt:message key="label.pay"/></button>
           </form>
-        </c:if>
       </div>
+        </c:if>
     </div>
     <hr>
   </ul>

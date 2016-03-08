@@ -48,7 +48,7 @@ public class OrderListDAOImpl implements OrderListDAO {
             preparedStatement.setLong(2, orderId);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new DAOException("Can not update status of current order ", e);
+            throw new DAOException("Can not updateNumberOfSeats status of current order ", e);
         } catch (ConnectionPoolException e) {
             throw new DAOException(e);
         }

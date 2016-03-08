@@ -50,13 +50,6 @@
         </c:if>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${(sessionScope.language)== 'ru_Ru'||(empty sessionScope.language)? 'Ru': 'En'}<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-          <li ><a href="/epam?command=changeLanguage&language=en_Us">En</a></li>
-          <li><a href="/epam?command=changeLanguage&language=ru_Ru">Ru</a></li>
-        </ul>
-        </li>
         <ctg:header/>
       </ul>
     </div><!--/.nav-collapse -->

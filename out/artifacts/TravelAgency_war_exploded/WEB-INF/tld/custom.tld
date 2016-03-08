@@ -11,4 +11,15 @@
         <tag-class>com.epam.agency.tag.HeaderTag</tag-class>
         <body-content>empty</body-content>
     </tag>
+
+    <tag>
+        <name>status</name>
+        <tag-class>com.epam.agency.tag.TourStatusTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>tourStatus</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
 </taglib>

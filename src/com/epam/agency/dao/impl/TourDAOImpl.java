@@ -28,11 +28,11 @@ public class TourDAOImpl implements TourDAO {
                             "SELECT t.tour_id, t.beg_date, t.end_date, t.type_id, t.resort_id," +
                             "t.cost,t.discription, t.operator_id, t.number_of_seats, t.tour_status FROM tour t" +
                             " INNER JOIN resort r ON t.resort_id=r.resort_id" +
-                            " WHERE r.country_id=? AND t.number_of_seats!=0";
+                            " WHERE r.country_id=? AND t.number_of_seats!=0 AND t.state!=1";
     private static final String SQL_GET_TOURS_BY_RESORT =
                             "SELECT tour_id, beg_date, end_date, type_id, resort_id, " +
                             "cost, discription, operator_id, number_of_seats, tour_status" +
-                            " FROM tour WHERE resort_id=? AND number_of_seats!=0 ";
+                            " FROM tour WHERE resort_id=? AND number_of_seats!=0 AND state!=1";
     private static final String SQL_UPDATE_NUMBER_OF_SEATS = "UPDATE tour SET number_of_seats=?" +
                                                              " WHERE tour_id=?";
     private static final String SQL_GET_TOUR_BY_ID =
@@ -52,6 +52,7 @@ public class TourDAOImpl implements TourDAO {
                             "cost, discription, operator_id, number_of_seats, tour_status" +
                             " FROM tour";
     private static final String SQL_DELETE_BY_ID = "DELETE FROM tour WHERE tour_id=?";
+    private static final String SQL_UPDATE_TOUR_STATE = "UPDATE tour SET state=1 WHERE tour_id=?";
 
     private TourDAOImpl() {
     }
@@ -122,7 +123,7 @@ public class TourDAOImpl implements TourDAO {
             preparedStatement.setLong(10, item.getTourId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new DAOException("Can not update tour ", e);
+            throw new DAOException("Can not updateNumberOfSeats tour ", e);
         } catch (ConnectionPoolException e) {
             throw new DAOException(e);
         }
@@ -184,14 +185,27 @@ public class TourDAOImpl implements TourDAO {
     }
 
     @Override
-    public void update(long tourId, int numberOfSeats) throws DAOException {
+    public void updateTourState(long tourId) throws DAOException {
+        try(ProxyConnection connection = pool.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_TOUR_STATE)) {
+            preparedStatement.setLong(1, tourId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DAOException("Can not update tour state", e);
+        } catch (ConnectionPoolException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    @Override
+    public void updateNumberOfSeats(long tourId, int numberOfSeats) throws DAOException {
         try(ProxyConnection connection = pool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_NUMBER_OF_SEATS)){
             preparedStatement.setInt(1, numberOfSeats);
             preparedStatement.setLong(2, tourId);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new DAOException("Can not update number of seats in current tour");
+            throw new DAOException("Can not updateNumberOfSeats number of seats in current tour");
         } catch (ConnectionPoolException e) {
             throw new DAOException(e);
         }

@@ -25,6 +25,7 @@
 <body>
 <div class="container">
   <div class="col-md-4 col-md-offset-4" style="margin-top:100px">
+    <h3 class="text-center"><span class="label label-danger"><fmt:message key="label.epamTravel"/></span></h3>
     <form name="signin" action="/epam" method="post">
       <input type="hidden" name="command" value="registrate">
 

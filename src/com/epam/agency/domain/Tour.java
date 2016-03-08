@@ -16,6 +16,7 @@ public class Tour extends Entity {
     private TourOperator tourOperator;
     private int numberOfSeats;
     private int tourStatus;
+    private int bit;
 
     public Tour() {
     }
@@ -45,6 +46,14 @@ public class Tour extends Entity {
         this.tourOperator = tourOperator;
         this.numberOfSeats = numberOfSeats;
         this.tourStatus = tourStatus;
+    }
+
+    public int getBit() {
+        return bit;
+    }
+
+    public void setBit(int bit) {
+        this.bit = bit;
     }
 
     public long getTourId() {

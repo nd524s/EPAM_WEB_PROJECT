@@ -13,8 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 public class DeleteTourCommand implements ActionCommand {
     private static final String PARAM_TOUR_ID = "tourId";
     private static final String ATTR_URL = "url";
-    private static final String PARAM_PREVIOUS_COMMAND = "previousCommand";
-    private static final String PARAM_ID = "id";
+    private static final String HEADER_ATTR = "referer";
 
     @Override
     public String execute(HttpServletRequest request) throws ServiceException {
@@ -22,27 +21,9 @@ public class DeleteTourCommand implements ActionCommand {
         TourService tourService = TourServiceImpl.getInstance();
 
         if(! tourService.delete(tourId)) {
-            request.setAttribute(ATTR_URL, chooseURL(request));
+            request.setAttribute(ATTR_URL, request.getHeader(HEADER_ATTR));
             return ResourceManager.getProperty("page.delete");
         }
-        return chooseURL(request);
+        return request.getHeader(HEADER_ATTR);
     }
-
-    /**
-     * Depending on the page where we call "DeleteCommand",
-     * builds appropriate URL for redirect.
-     * @param request
-     * @return URL.
-     */
-    private String chooseURL(HttpServletRequest request) {
-        String par = request.getParameter(PARAM_ID);
-        if (par != null) {
-            return URLBuilder.buildFullURL(request.getRequestURL(), request.getParameter(PARAM_PREVIOUS_COMMAND),
-                                           PARAM_ID, request.getParameter(PARAM_ID));
-        } else {
-            return URLBuilder.buildFullURL(request.getRequestURL(), request.getParameter(PARAM_PREVIOUS_COMMAND));
-        }
-    }
-
-
 }

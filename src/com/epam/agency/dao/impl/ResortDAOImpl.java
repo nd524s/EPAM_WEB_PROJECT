@@ -26,7 +26,7 @@ public class ResortDAOImpl implements ResortDAO {
     private static final String SQL_GET_RESORT_BY_ID = "SELECT resort_id, resort_name, country_id" +
                                                        " FROM resort WHERE resort_id=?";
     private static final String SQL_GET_ALL_RESORTS = "SELECT resort_id, resort_name, country_id" +
-                                                      " FROM resort ";
+                                                      " FROM resort ORDER BY resort_name ";
     private ResortDAOImpl() {
     }
 

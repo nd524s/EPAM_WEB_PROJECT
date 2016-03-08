@@ -1,5 +1,6 @@
 package test.com.epam.agency;
 
+import com.epam.agency.pool.ConnectionPool;
 import com.epam.agency.util.ResourceManager;
 import junit.framework.Assert;
 import org.junit.BeforeClass;
@@ -33,6 +34,11 @@ public class PoolInitTest {
         properties.add(PASSWORD);
         properties.add(POOL_SIZE);
         Assert.assertEquals(properties, initProperties());
+    }
+
+    @Test
+    public void instanceInitTest() {
+        Assert.assertNotNull(ConnectionPool.getInstance());
     }
 
 }

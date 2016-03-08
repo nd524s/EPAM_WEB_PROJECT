@@ -30,6 +30,16 @@
 
 <!-- Begin page content -->
 <div class="container">
+  <div class="col-md-1 col-md-offset-11">
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+          <fmt:message key="label.changeLanguage"/><span class="caret"></span></button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="/epam?command=changeLanguage&language=en_Us">En</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="/epam?command=changeLanguage&language=ru_Ru">Ru</a></li>
+        </ul>
+      </div>
+  </div>
   <h1 class="text-center"><fmt:message key="label.main"/></h1>
   <hr>
   ${salo}
@@ -52,8 +62,8 @@
           <li><strong><fmt:message key="label.cost"/></strong> <c:out value="${temp.cost}" /></li>
           <li><strong><fmt:message key="label.discription"/></strong> <c:out value="${temp.discription}" /></li>
           <li><strong><fmt:message key="label.operator"/></strong> <c:out value="${temp.tourOperator.operatorName}" /></li>
-          <li><strong><fmt:message key="label.seats"/></strong> <c:out value="${temp.numberOfSeats}" /></li>
-          <li><strong><fmt:message key="label.tourStatus"/></strong> <fmt:message key="label.berning"/></li>
+          <li><strong><fmt:message key="label.seats"/></strong> <span class="badge"><c:out value="${temp.numberOfSeats}" /></span></li>
+          <li><strong><fmt:message key="label.tourStatus"/></strong> <span class="label label-danger"><fmt:message key="label.berning"/></span></li>
         </ul>
 
         <form name="order" action="epam" method="post">
@@ -69,6 +79,7 @@
             </td>
             <td class="col-md-1">
               <input type="number" name="num" required min="1" max="${temp.numberOfSeats}" style="width: 50px;">
+              <fmt:message key="label.number"/>
             </td>
           </c:if>
         </form>

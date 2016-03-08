@@ -1,24 +1,15 @@
 package com.epam.agency.service.impl;
 
-import com.epam.agency.dao.CountryDAO;
 import com.epam.agency.dao.TourDAO;
-import com.epam.agency.dao.TourTypeDAO;
-import com.epam.agency.dao.impl.CountryDAOImpl;
 import com.epam.agency.dao.impl.TourDAOImpl;
-import com.epam.agency.dao.impl.TourTypeDAOImpl;
-import com.epam.agency.domain.Entity;
 import com.epam.agency.domain.OrderList;
 import com.epam.agency.domain.Tour;
 import com.epam.agency.dao.exception.DAOException;
-import com.epam.agency.domain.TourType;
 import com.epam.agency.service.OrderListService;
 import com.epam.agency.service.TourService;
 import com.epam.agency.service.exception.ServiceException;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by Никита on 04.02.2016.
@@ -57,7 +48,7 @@ public class TourServiceImpl implements TourService {
         }
         if(counter == 0) {
             try {
-                tourDAO.delete(tourId);
+                tourDAO.updateTourState(tourId);
             } catch (DAOException e) {
                 throw new ServiceException(e);
             }
@@ -109,7 +100,7 @@ public class TourServiceImpl implements TourService {
         TourDAO tourDAO = TourDAOImpl.getInstance();
         int difference =  allItems - currentItems;
         try {
-            tourDAO.update(tourId, difference);
+            tourDAO.updateNumberOfSeats(tourId, difference);
         } catch (DAOException e) {
             throw new ServiceException(e);
         }

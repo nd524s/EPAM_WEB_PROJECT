@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:choose>
   <c:when test="${sessionScope.language == null}">
     <fmt:setLocale value="ru_Ru"/>
@@ -24,18 +25,25 @@
 <html>
 <head>
   <title><fmt:message key="title.resorts"/></title>
+  <link rel="stylesheet" href="../../css/top-buffer.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/sticky-footer-navbar.css">
 </head>
 <body>
 <c:import url="header.jsp"></c:import>
-<div class="col-md-2 col-md-offset-5" style="margin-top: 15% ">
-  ${warn}
-  <c:forEach var="temp" items="${resorts}">
-    <div class="list-group">
-      <a href="/epam?command=resort&id=${temp.resortId}" class="list-group-item">${temp.resortName}</a>
-    </div>
-  </c:forEach>
+<div class="container">
+    ${warn}
+    <c:forEach var="temp" items="${resorts}" varStatus="number">
+      <c:if test="${(number.count) == 1 || (number.count mod 4) == 1}">
+        <div class="row top-buffer">
+      </c:if>
+      <div class="col-md-2 col-md-offset-1">
+        <a href="/epam?command=resort&id=${temp.resortId}" class="btn btn-default btn-block" role="button">${temp.resortName}</a>
+      </div>
+      <c:if test="${(number.count) == fn:length(resorts) || (number.count mod 4) == 0}">
+        </div>
+      </c:if>
+    </c:forEach>
 </div>
 
 <c:import url="footer.jsp"></c:import>
