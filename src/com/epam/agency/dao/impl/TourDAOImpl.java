@@ -41,15 +41,15 @@ public class TourDAOImpl implements TourDAO {
                             " FROM tour WHERE tour_id=?";
     private static final String SQL_CREATE_TOUR =
                             "INSERT INTO tour(beg_date, end_date, type_id, resort_id, cost," +
-                            " discription, operator_id, number_of_seats)" +
-                            " VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+                            " discription, operator_id, number_of_seats, tour_status)" +
+                            " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String SQL_UPDATE_TOUR =
                             "UPDATE tour SET beg_date=?, end_date=?, type_id=?, resort_id=?, " +
                             "cost=?, discription=?, operator_id=?, number_of_seats=?, tour_status=?" +
                             " WHERE tour_id=?";
     private static final String SQL_GET_ALL =
                             "SELECT tour_id, beg_date, end_date, type_id, resort_id, " +
-                            "cost, discription, operator_id, number_of_seats, tour_status" +
+                            "cost, discription, operator_id, number_of_seats, tour_status, state" +
                             " FROM tour";
     private static final String SQL_DELETE_BY_ID = "DELETE FROM tour WHERE tour_id=?";
     private static final String SQL_UPDATE_TOUR_STATE = "UPDATE tour SET state=1 WHERE tour_id=?";
@@ -95,8 +95,9 @@ public class TourDAOImpl implements TourDAO {
                     TourOperator operator = tourOperatorDao.getById(resultSet.getLong("operator_id"));
                     int numberOfSeats = resultSet.getInt("number_of_seats");
                     int tourStatus = resultSet.getInt("tour_status");
+                    int state = resultSet.getInt("state");
                     tours.add(new Tour(tourId, begDate, endDate, tourType, resort, cost,
-                            discription, operator, numberOfSeats, tourStatus));
+                              discription, operator, numberOfSeats, tourStatus, state));
                 }
             }
         } catch (SQLException e) {
@@ -141,6 +142,7 @@ public class TourDAOImpl implements TourDAO {
             preparedStatement.setString(6, item.getDiscription());
             preparedStatement.setLong(7, item.getTourOperator().getOperatorId());
             preparedStatement.setInt(8, item.getNumberOfSeats());
+            preparedStatement.setInt(9, item.getTourStatus());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException("Can not create tour", e);

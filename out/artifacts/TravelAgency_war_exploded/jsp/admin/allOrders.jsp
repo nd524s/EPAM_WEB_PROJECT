@@ -57,7 +57,6 @@
           <form name="processOrder" action="epam" method="post" class="form-inline">
             <input type="hidden" name="command" value="processOrder">
             <input type="hidden" name="orderId" value="${temp.orderId}">
-            <input type="hidden" name="previousCommand" value="${param.command}">
             <select name="status" class="form-control">
               <option value="2"><fmt:message key="label.approve"/></option>
               <option value="3"><fmt:message key="label.cancel"/></option>

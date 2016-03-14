@@ -37,6 +37,9 @@
   <h1 align="center"><fmt:message key="label.tours"/></h1>
   <h3 align="center">${warn}</h3>
   <h3 align="center">${message}</h3>
+  <c:if test="${param.message eq 'warning'}">
+    <h4 class="text-danger text-center"><fmt:message key="message.items" /></h4>
+  </c:if>
 
   <c:if test="${warn eq null}">
 
@@ -69,8 +72,6 @@
         <input type="hidden" name="tourId" value="${temp.tourId}">
         <input type="hidden" name="userId" value="${sessionScope.user.userId}">
         <input type="hidden" name="totalNum" value="${temp.numberOfSeats}">
-        <input type="hidden" name="previousCommand" value="${param.command}">
-        <input type="hidden" name="id" value="${param.id}">
         <c:if test="${sessionScope.role eq 'user'}">
           <td class="col-md-1">
             <button class="btn btn-group-sm btn-primary" type="submit"><fmt:message key="label.order"/></button>

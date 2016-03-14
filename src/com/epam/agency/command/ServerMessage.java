@@ -22,10 +22,10 @@ public class ServerMessage {
         String language = (String) session.getAttribute(ATTR_LANGUAGE);
         String message;
 
-        if("ru_Ru".equals(language)) {
-            message = ResourceManager.getRuMessage(messageKey);
-        } else {
+        if("en_Us".equals(language)) {
             message = ResourceManager.getEnMessage(messageKey);
+        } else {
+            message = ResourceManager.getRuMessage(messageKey);
         }
         return message;
     }

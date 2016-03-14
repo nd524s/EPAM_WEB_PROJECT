@@ -42,10 +42,12 @@
   </div>
   <h1 class="text-center"><fmt:message key="label.main"/></h1>
   <hr>
-  ${salo}
   <c:if test="${not empty tours}">
     <h3 class="text-center"><fmt:message key="label.burnTour"/></h3>
     <hr>
+    <c:if test="${param.message eq 'warning'}">
+      <h4 class="text-danger text-center"><fmt:message key="message.items" /></h4>
+    </c:if>
   </c:if>
     <c:forEach var="temp" items="${tours}" varStatus="number">
       <c:if test="${(number.count) == 1 || (number.count mod 3) == 1}">
@@ -71,8 +73,6 @@
           <input type="hidden" name="tourId" value="${temp.tourId}">
           <input type="hidden" name="userId" value="${sessionScope.user.userId}">
           <input type="hidden" name="totalNum" value="${temp.numberOfSeats}">
-          <input type="hidden" name="previousCommand" value="${param.command}">
-          <input type="hidden" name="id" value="${param.id}">
           <c:if test="${sessionScope.role eq 'user'}">
             <td class="col-md-1">
               <button class="btn btn-group-sm btn-primary" type="submit"><fmt:message key="label.order"/></button>

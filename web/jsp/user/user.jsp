@@ -60,7 +60,6 @@
             <input type="hidden" name="orderId" value="${temp.orderId}">
             <input type="hidden" name="totalNum" value="${temp.tour.numberOfSeats}">
             <input type="hidden" name="itemNum" value="${temp.itemNumber}">
-            <input type="hidden" name="previousCommand" value="${param.command}">
             <button class="btn btn-group-sm btn-primary" type="submit"><fmt:message key="label.cancelOrder"/></button>
           </form>
         </c:if>

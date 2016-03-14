@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 public class ProcessOrderCommand implements ActionCommand {
     private static final String PARAM_ORDER_ID = "orderId";
     private static final String PARAM_STATUS_ID = "status";
-    private static final String PARAM_PREVIOUS_COMMAND = "previousCommand";
+    private static final String HEADER_ATTR = "referer";
 
     @Override
     public String execute(HttpServletRequest request) throws ServiceException {
@@ -22,6 +22,6 @@ public class ProcessOrderCommand implements ActionCommand {
         OrderListService orderListService = OrderListServiceImpl.getInstance();
         orderListService.processOrder(statusId, orderId);
 
-        return URLBuilder.buildFullURL(request.getRequestURL(), request.getParameter(PARAM_PREVIOUS_COMMAND));
+        return request.getHeader(HEADER_ATTR);
     }
 }

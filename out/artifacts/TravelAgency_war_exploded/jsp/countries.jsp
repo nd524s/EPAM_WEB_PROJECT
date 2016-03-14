@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:if test="${sessionScope.language == null}">
     <fmt:setLocale value="ru_Ru"/>
 </c:if>
@@ -24,9 +25,11 @@
 </head>
 <body>
 <c:import url="header.jsp"></c:import>
-<div class="container">
-    <div class="row" style="margin-top: 5%">
-        <c:forEach var="temp" items="${countries}">
+<div class="container" style="margin-top: 5%">
+        <c:forEach var="temp" items="${countries}" varStatus="number">
+            <c:if test="${(number.count) == 1 || (number.count mod 4) == 1}">
+            <div class="row">
+                </c:if>
             <div class="col-md-2 col-md-offset-1">
             ${warn}
                 <a href="/epam?command=country&id=${temp.countryId}">
@@ -34,8 +37,10 @@
                 </a>
                 <h5 class="text-center">${temp.countryName}</h5>
             </div>
+            <c:if test="${(number.count) == fn:length(resorts) || (number.count mod 4) == 0}">
+                </div>
+            </c:if>
         </c:forEach>
-    </div>
 </div>
 
 <c:import url="footer.jsp"></c:import>

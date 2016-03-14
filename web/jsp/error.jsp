@@ -37,6 +37,7 @@
     <div class="col-md-12">
       <div class="error-template">
         <h1><fmt:message key="message.error"/></h1>
+        <h3 class="text-danger">${error}</h3>
         <div class="error-actions">
           <a href="../index.jsp" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
             <fmt:message key="label.error"/>

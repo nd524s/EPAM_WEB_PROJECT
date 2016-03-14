@@ -20,7 +20,6 @@ public class LoginCommand implements ActionCommand {
     private static final String SESSION_ROLE = "role";
     private static final String SESSION_USER = "user";
     private static final String ATTR_WARN = "warn";
-    private static final String COMMAND = "getBurningTours";
 
     @Override
     public String execute(HttpServletRequest request) throws ServiceException {
@@ -30,6 +29,7 @@ public class LoginCommand implements ActionCommand {
         String password = request.getParameter(PARAM_PASSWORD);
         String warn = LoginCheck.checkLoginData(session, login, password);
         String loginPage = ResourceManager.getProperty("page.login");
+        String mainPage = ResourceManager.getProperty("page.index");
 
         if(warn != null) {
             request.setAttribute(ATTR_WARN, warn);
@@ -45,7 +45,7 @@ public class LoginCommand implements ActionCommand {
             request.setAttribute(ATTR_WARN, ServerMessage.message(request.getSession(), "message.authorization"));
             return loginPage;
         }
-        return URLBuilder.buildFullURL(request.getRequestURL(), COMMAND);
+        return mainPage;
     }
 
 }

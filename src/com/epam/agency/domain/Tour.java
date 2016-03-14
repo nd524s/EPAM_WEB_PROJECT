@@ -16,7 +16,7 @@ public class Tour extends Entity {
     private TourOperator tourOperator;
     private int numberOfSeats;
     private int tourStatus;
-    private int bit;
+    private int state;
 
     public Tour() {
     }
@@ -48,12 +48,27 @@ public class Tour extends Entity {
         this.tourStatus = tourStatus;
     }
 
-    public int getBit() {
-        return bit;
+    public Tour(long tourId, Date begDate, Date endDate, TourType tourType, Resort resort, double cost,
+                String discription, TourOperator tourOperator, int numberOfSeats, int tourStatus, int state) {
+        this.tourId = tourId;
+        this.begDate = begDate;
+        this.endDate = endDate;
+        this.tourType = tourType;
+        this.cost = cost;
+        this.discription = discription;
+        this.resort = resort;
+        this.tourOperator = tourOperator;
+        this.numberOfSeats = numberOfSeats;
+        this.tourStatus = tourStatus;
+        this.state = state;
     }
 
-    public void setBit(int bit) {
-        this.bit = bit;
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 
     public long getTourId() {

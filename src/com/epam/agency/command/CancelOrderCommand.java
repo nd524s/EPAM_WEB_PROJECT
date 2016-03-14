@@ -16,7 +16,7 @@ public class CancelOrderCommand implements ActionCommand {
     private static final String PARAM_ORDER_ID = "orderId";
     private static final String PARAM_TOUR_ITEMS = "totalNum";
     private static final String PARAM_ORDER_ITEMS = "itemNum";
-    private static final String PARAM_PREVIOUS_COMMAND = "previousCommand";
+    private static final String HEADER_ATTR = "referer";
 
     @Override
     public String execute(HttpServletRequest request) throws ServiceException {
@@ -29,6 +29,6 @@ public class CancelOrderCommand implements ActionCommand {
 
         orderListService.deleteOrder(orderId);
         tourService.updateSeatsNumber(tourId, allItems, -orderItems);
-        return URLBuilder.buildFullURL(request.getRequestURL(), request.getParameter(PARAM_PREVIOUS_COMMAND));
+        return request.getHeader(HEADER_ATTR);
     }
 }

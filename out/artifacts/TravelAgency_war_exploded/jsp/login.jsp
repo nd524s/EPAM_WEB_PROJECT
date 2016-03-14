@@ -24,6 +24,7 @@
 <body>
 <div class="container">
   <div class="col-md-4 col-md-offset-4" style="margin-top:150px">
+    <a href="/index.jsp"><h3 class="text-center"><fmt:message key="label.epamTravel"/></h3></a>
     <form name="signin" action="/epam" method="post">
       <input type="hidden" name="command" value="login">
 

@@ -2,7 +2,9 @@ package com.epam.agency.controller;
 
 import com.epam.agency.command.ActionCommand;
 import com.epam.agency.command.ActionFactory;
+import com.epam.agency.command.ErrorHandler;
 import com.epam.agency.service.exception.ServiceException;
+import com.epam.agency.util.ResourceManager;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -48,7 +50,7 @@ public class Controller extends HttpServlet {
                 req.getRequestDispatcher(page).forward(req, resp);
             }
         } catch (ServiceException e) {
-            e.printStackTrace();
+            ErrorHandler.handleError(req, resp, e);
         }
 
     }

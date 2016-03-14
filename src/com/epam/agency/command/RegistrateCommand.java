@@ -58,13 +58,14 @@ public class RegistrateCommand implements ActionCommand {
      */
     private String authenticate(User user, HttpSession session, HttpServletRequest request) throws ServiceException {
         UserService service = UserServiceImpl.getInstance();
+        String mainPage = ResourceManager.getProperty("page.index");
 
         if(service.addUser(user)) {
             session.setAttribute(SESSION_ROLE, service.getByLoginPassword(user.getLogin(), user.getPassword())
                     .getRole()
                     .getRoleName());
             session.setAttribute(SESSION_USER, user);
-           return URLBuilder.buildFullURL(request.getRequestURL(), COMMAND);
+           return mainPage;
         } else {
             request.setAttribute(ATTR_WARNING, ServerMessage.message(request.getSession(), "message.registration"));
             return ResourceManager.getProperty("page.registration");

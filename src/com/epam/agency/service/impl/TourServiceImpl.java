@@ -59,13 +59,25 @@ public class TourServiceImpl implements TourService {
     }
 
     @Override
+    public Tour getTourById(long tourId) throws ServiceException {
+        TourDAO tourDAO = TourDAOImpl.getInstance();
+        Tour tour = null;
+        try {
+            tour = tourDAO.getById(tourId);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+        return tour;
+    }
+
+    @Override
     public ArrayList<Tour> getBurningTours() throws ServiceException {
         TourDAO tourDAO = TourDAOImpl.getInstance();
         ArrayList<Tour> tours = new ArrayList<>();
 
         try {
             for(Tour tour : tourDAO.getAll()) {
-                if (tour.getTourStatus() == BURNING_TOUR_STATUS) {
+                if (tour.getTourStatus() == BURNING_TOUR_STATUS && tour.getNumberOfSeats() > 0 && tour.getState() == 0) {
                     tours.add(tour);
                 }
             }

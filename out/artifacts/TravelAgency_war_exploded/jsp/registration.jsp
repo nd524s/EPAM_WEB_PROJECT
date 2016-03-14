@@ -25,7 +25,7 @@
 <body>
 <div class="container">
   <div class="col-md-4 col-md-offset-4" style="margin-top:100px">
-    <h3 class="text-center"><span class="label label-danger"><fmt:message key="label.epamTravel"/></span></h3>
+    <a href="/index.jsp"><h3 class="text-center"><fmt:message key="label.epamTravel"/></h3></a>
     <form name="signin" action="/epam" method="post">
       <input type="hidden" name="command" value="registrate">
 
@@ -41,7 +41,7 @@
 
       <div class="form-group">
         <label for="inputTelNumber"><fmt:message key="label.telNumber"/></label>
-        <input type="text" class="form-control" name="telNumber" value="${param.telNumber}" required pattern="^(\+375)(29|33|44)([1-9]){7}$" id="inputTelNumber" placeholder=<fmt:message key="label.telNumber"/> >
+        <input type="text" class="form-control" name="telNumber" value="${param.telNumber}" required pattern="^(\+375)(29|33|44)([1-9]){1}([0-9]){6}$" id="inputTelNumber" placeholder=<fmt:message key="label.telNumber"/> >
       </div>
 
       <div class="form-group">

@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServletRequest;
  * Created by Никита on 14.02.2016.
  */
 public class LogoutCommand implements ActionCommand {
-    private static final String COMMAND = "getBurningTours";
 
     @Override
     public String execute(HttpServletRequest request) throws ServiceException {
+        String mainPage = ResourceManager.getProperty("page.index");
         request.getSession().invalidate();
-        return URLBuilder.buildFullURL(request.getRequestURL(), COMMAND);
+        return mainPage;
     }
 }
