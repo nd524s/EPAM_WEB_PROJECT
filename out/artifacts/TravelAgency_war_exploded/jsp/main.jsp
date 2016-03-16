@@ -23,6 +23,9 @@
   <title><fmt:message key="title.main"/></title>
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/sticky-footer-navbar.css">
+  <style>
+    .btn {width: 135px;}
+  </style>
 </head>
 <body>
 <!-- Fixed navbar -->

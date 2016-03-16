@@ -49,7 +49,7 @@ public class PayCommand implements ActionCommand {
     /**
      * Gets list of orders for current user.
      * @param request
-     * @return list of orders.
+     * @return list of orders
      * @throws ServiceException
      */
     private ArrayList<OrderList> getUserOrders(HttpServletRequest request) throws ServiceException {

@@ -15,6 +15,7 @@
   <fmt:setLocale value="${sessionScope.language}"/>
 </c:if>
 <fmt:setBundle basename="resources.caption"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +32,7 @@
   </div>
   <h4 align="center" style="color: red">${warn}</h4>
   <c:if test="${param.message == 'success'}">
-    <h4 align="center" style="color: #6dff7f"><fmt:message key="message.add"/></h4>
+    <h4 align="center" style="color: #0F28FF"><fmt:message key="message.add"/></h4>
   </c:if>
   <div class="col-md-4 col-md-offset-4">
     <form name="addTour" action="/epam" method="post">

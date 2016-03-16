@@ -27,6 +27,9 @@
     <title><fmt:message key="title.tours"/></title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/sticky-footer-navbar.css">
+  <style>
+    .btn {width: 122px;}
+  </style>
 </head>
 <body>
 <c:import url="header.jsp"></c:import>

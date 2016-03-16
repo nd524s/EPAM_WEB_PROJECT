@@ -10,6 +10,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="ctg" uri="customtags" %>
+
 <c:if test="${sessionScope.language == null}">
   <fmt:setLocale value="ru_Ru"/>
 </c:if>
@@ -21,7 +22,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><fmt:message key="title.user"/></title>
+  <title><fmt:message key="title.user"/></title>
   <link rel="stylesheet" href="../../css/bootstrap.min.css">
   <link rel="stylesheet" href="../../css/sticky-footer-navbar.css">
   <link rel="stylesheet" href="../../css/top-buffer.css">
@@ -38,43 +39,43 @@
     </c:if>
     <div class="col-md-4 ">
       <div class="well">
-  <ul class="list-unstyled">
-    <li><strong>№ </strong><c:out value="${number.count}" /></li>
-    <li><strong><fmt:message key="label.begDate"/></strong> <c:out value="${temp.tour.begDate}" /></li>
-    <li><strong><fmt:message key="label.endDate"/></strong> <c:out value="${temp.tour.endDate}" /></li>
-    <li><strong><fmt:message key="label.tourType"/></strong> <c:out value="${temp.tour.tourType.typeName}" /></li>
-    <li><strong><fmt:message key="label.resort"/></strong> <c:out value="${temp.tour.resort.resortName}" /></li>
-    <li><strong><fmt:message key="label.country"/></strong> <c:out value="${temp.tour.resort.country.countryName}" /></li>
-    <li><strong><fmt:message key="label.cost"/></strong> <c:out value="${temp.tour.cost}" /></li>
-    <li><strong><fmt:message key="label.discription"/></strong> <c:out value="${temp.tour.discription}" /></li>
-    <li><strong><fmt:message key="label.operator"/></strong> <c:out value="${temp.tour.tourOperator.operatorName}" /></li>
-    <li><strong><fmt:message key="label.orderDate"/></strong> <c:out value="${temp.orderDate}" /></li>
-    <li><strong><fmt:message key="label.itemNumber"/></strong> <span class="badge"><c:out value="${temp.itemNumber}" /></span></li>
-    <li><strong><fmt:message key="label.status"/></strong> <ctg:status tourStatus="${temp.orderStatus.statusName}" /></li>
-    <div class="row top-buffer">
-      <div class="col-md-2">
-        <c:if test="${temp.orderStatus.statusName eq 'processed' || temp.orderStatus.statusName eq 'approved'}">
-          <form name="cancelOrder" action="epam" method="post">
-            <input type="hidden" name="command" value="cancelOrder">
-            <input type="hidden" name="tourId" value="${temp.tour.tourId}">
-            <input type="hidden" name="orderId" value="${temp.orderId}">
-            <input type="hidden" name="totalNum" value="${temp.tour.numberOfSeats}">
-            <input type="hidden" name="itemNum" value="${temp.itemNumber}">
-            <button class="btn btn-group-sm btn-primary" type="submit"><fmt:message key="label.cancelOrder"/></button>
-          </form>
-        </c:if>
-      </div>
-        <c:if test="${temp.orderStatus.statusName eq 'approved'}">
-          <div class="col-md-2 col-md-offset-3">
-          <form name="pay" action="jsp/user/payPage.jsp" method="post">
-            <input type="hidden" name="orderId" value="${temp.orderId}">
-            <button class="btn btn-group-sm btn-info" type="submit"><fmt:message key="label.pay"/></button>
-          </form>
-      </div>
-        </c:if>
-    </div>
-    <hr>
-  </ul>
+        <ul class="list-unstyled">
+          <li><strong>№ </strong><c:out value="${number.count}" /></li>
+          <li><strong><fmt:message key="label.begDate"/></strong> <c:out value="${temp.tour.begDate}" /></li>
+          <li><strong><fmt:message key="label.endDate"/></strong> <c:out value="${temp.tour.endDate}" /></li>
+          <li><strong><fmt:message key="label.tourType"/></strong> <c:out value="${temp.tour.tourType.typeName}" /></li>
+          <li><strong><fmt:message key="label.resort"/></strong> <c:out value="${temp.tour.resort.resortName}" /></li>
+          <li><strong><fmt:message key="label.country"/></strong> <c:out value="${temp.tour.resort.country.countryName}" /></li>
+          <li><strong><fmt:message key="label.cost"/></strong> <c:out value="${temp.tour.cost}" /></li>
+          <li><strong><fmt:message key="label.discription"/></strong> <c:out value="${temp.tour.discription}" /></li>
+          <li><strong><fmt:message key="label.operator"/></strong> <c:out value="${temp.tour.tourOperator.operatorName}" /></li>
+          <li><strong><fmt:message key="label.orderDate"/></strong> <c:out value="${temp.orderDate}" /></li>
+          <li><strong><fmt:message key="label.itemNumber"/></strong> <span class="badge"><c:out value="${temp.itemNumber}" /></span></li>
+          <li><strong><fmt:message key="label.status"/></strong> <ctg:status tourStatus="${temp.orderStatus.statusName}" /></li>
+          <div class="row top-buffer">
+            <div class="col-md-2">
+              <c:if test="${temp.orderStatus.statusName eq 'processed' || temp.orderStatus.statusName eq 'approved'}">
+                <form name="cancelOrder" action="epam" method="post">
+                  <input type="hidden" name="command" value="cancelOrder">
+                  <input type="hidden" name="tourId" value="${temp.tour.tourId}">
+                  <input type="hidden" name="orderId" value="${temp.orderId}">
+                  <input type="hidden" name="totalNum" value="${temp.tour.numberOfSeats}">
+                  <input type="hidden" name="itemNum" value="${temp.itemNumber}">
+                  <button class="btn btn-group-sm btn-primary" type="submit"><fmt:message key="label.cancelOrder"/></button>
+                </form>
+              </c:if>
+            </div>
+              <c:if test="${temp.orderStatus.statusName eq 'approved'}">
+                <div class="col-md-2 col-md-offset-3">
+                <form name="pay" action="jsp/user/payPage.jsp" method="post">
+                  <input type="hidden" name="orderId" value="${temp.orderId}">
+                  <button class="btn btn-group-sm btn-info" type="submit"><fmt:message key="label.pay"/></button>
+                </form>
+            </div>
+              </c:if>
+          </div>
+          <hr>
+        </ul>
       </div>
     </div>
     <c:if test="${(number.count) == fn:length(orders) || (number.count mod 3) == 0}">

@@ -20,11 +20,13 @@
 <head>
     <title><fmt:message key="title.payPage"/></title>
   <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/sticky-footer-navbar.css">
 </head>
 <body>
+<c:import url="../header.jsp"></c:import>
 <div class="container">
-  <div class="col-md-4 col-md-offset-4" style="margin-top:150px">
-    <h1><fmt:message key="label.pay"/></h1>
+  <div class="col-md-4 col-md-offset-4" style="margin-top:110px">
+    <h1 class="text-center"><fmt:message key="label.pay"/></h1>
     <form name="payForm" action="/epam" method="post">
       <input type="hidden" name="command" value="pay">
       <input type="hidden" name="orderId" value="${param.orderId}">
@@ -39,5 +41,8 @@
   </div>
 </div>
 
+<c:import url="../footer.jsp"></c:import>
+<script src="../../js/jquery-1.11.3.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
 </body>
 </html>
