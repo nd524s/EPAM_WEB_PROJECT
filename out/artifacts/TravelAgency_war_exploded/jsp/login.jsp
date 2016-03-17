@@ -42,7 +42,6 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit"><fmt:message key="label.signIn"/></button>
     </form>
   </div>
-
 </div>
 </body>
 </html>

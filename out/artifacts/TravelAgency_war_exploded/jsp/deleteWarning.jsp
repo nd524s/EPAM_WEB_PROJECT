@@ -23,9 +23,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><fmt:message key="title.message"/></title>
+  <title><fmt:message key="title.message"/></title>
   <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
+
 <body>
 <div class="container">
   <div class="row">

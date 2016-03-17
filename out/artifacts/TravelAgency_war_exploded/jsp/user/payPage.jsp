@@ -18,10 +18,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><fmt:message key="title.payPage"/></title>
+  <title><fmt:message key="title.payPage"/></title>
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="../../css/sticky-footer-navbar.css">
 </head>
+
 <body>
 <c:import url="../header.jsp"></c:import>
 <div class="container">

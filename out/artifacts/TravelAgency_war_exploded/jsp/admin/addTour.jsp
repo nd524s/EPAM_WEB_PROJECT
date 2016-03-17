@@ -19,7 +19,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><fmt:message key="title.addTour"/></title>
+  <title><fmt:message key="title.addTour"/></title>
   <link rel="stylesheet" href="../../css/bootstrap.min.css">
   <link rel="stylesheet" href="../../css/sticky-footer-navbar.css">
 </head>
@@ -28,7 +28,7 @@
 <div class="container">
   <h1 align="center"><fmt:message key="label.addTour"/></h1>
   <div class="row">
-    <button type="button" class="btn btn-primary" name="back" onclick="history.back()">back</button>
+    <button type="button" class="btn btn-primary" name="back" onclick="history.back()"><fmt:message key="label.back"/> </button>
   </div>
   <h4 align="center" style="color: red">${warn}</h4>
   <c:if test="${param.message == 'success'}">
@@ -93,7 +93,7 @@
 
       <div class="form-group">
         <label for="seats"><fmt:message key="label.itemNumber"/></label>
-        <input type="number" min="1" class="form-control" name="itemNumber" pattern="^([1]{1}|[1][0-9]+)$" value="${param.itemNumber}" required id="seats" placeholder=<fmt:message key="label.itemNumber"/> >
+        <input type="number" min="1" class="form-control" name="itemNumber" pattern="^([1]{1}|[1-9]{1}[0-9]{1,3})$" value="${param.itemNumber}" required id="seats" placeholder=<fmt:message key="label.itemNumber"/> >
       </div>
 
       <div class="form-group">
@@ -125,6 +125,7 @@
     </form>
   </div>
 </div>
+
 <c:import url="../footer.jsp"></c:import>
 <script src="../../js/jquery-1.11.3.min.js"></script>
 <script src="../../js/bootstrap.min.js"></script>

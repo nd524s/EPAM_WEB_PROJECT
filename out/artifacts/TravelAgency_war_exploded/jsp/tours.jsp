@@ -35,7 +35,7 @@
 <c:import url="header.jsp"></c:import>
 <div class="container">
   <div class="row">
-    <button type="button" class="btn btn-primary" name="back" onclick="history.back()">back</button>
+    <button type="button" class="btn btn-primary" name="back" onclick="history.back()"><fmt:message key="label.back"/> </button>
   </div>
   <h1 align="center"><fmt:message key="label.tours"/></h1>
   <h3 align="center">${warn}</h3>

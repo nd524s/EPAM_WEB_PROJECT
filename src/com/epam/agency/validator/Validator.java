@@ -20,7 +20,7 @@ public class Validator {
     private static final String PASSWORD_REGEX = "^([a-zA-Z0-9]{4,20})$";
     private static final String DATE_REGEX = "[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])";
     private static final String COST_REGEX = "^([1-9][0-9]*(.[0-9]{1,2})?|[0])$";
-    private static final String ITEM_NUMBER_REGEX = "^([1]{1}|[1-9]?[0-9]+)$";
+    private static final String ITEM_NUMBER_REGEX = "^([1]{1}|[1-9]{1}[0-9]{1,3})$";
 
     public static boolean validateCardNumber(String str) {
         return check(str, CARD_NUMBER_REGEX);

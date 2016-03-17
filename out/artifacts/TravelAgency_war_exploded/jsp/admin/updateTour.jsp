@@ -23,7 +23,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><fmt:message key="title.updateTour"/></title>
+  <title><fmt:message key="title.updateTour"/></title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/sticky-footer-navbar.css">
 </head>
@@ -34,7 +34,7 @@
   <h4 align="center" style="color: red">${warn}</h4>
   <h4 align="center" style="color: #0F28FF">${message}</h4>
   <div class="row">
-    <button type="button" class="btn btn-primary" name="back" onclick="history.back(1)">back</button>
+    <button type="button" class="btn btn-primary" name="back" onclick="history.back(1)"><fmt:message key="label.back"/> </button>
   </div>
   <div class="col-md-4 col-md-offset-4">
     <form name="addTour" action="/epam" method="post">
@@ -95,7 +95,7 @@
 
       <div class="form-group">
         <label for="seats"><fmt:message key="label.itemNumber"/></label>
-        <input type="number" min="1" class="form-control" name="seats" pattern="^([1]{1}|[1][0-9]+)$" value="${param.seats}" required id="seats" placeholder=<fmt:message key="label.itemNumber"/> >
+        <input type="number" min="1" class="form-control" name="seats" pattern="^([1]{1}|[1-9]{1}[0-9]{1,3})$" value="${param.seats}" required id="seats" placeholder=<fmt:message key="label.itemNumber"/> >
       </div>
 
       <div class="form-group">
