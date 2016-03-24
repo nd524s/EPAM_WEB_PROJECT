@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 public class Validator {
     private static final String CARD_NUMBER_REGEX = "[0-9]{16}";
     private static final String NAME_REGEX = "^([A-Za-z]{1,40}|[а-яА-ЯЁё]{1,40})$";
-    private static final String TEL_NUMBER_REGEX = "(\\+375)(29|33|44)([1-9]){1}([0-9]){6}$";
+    private static final String TEL_NUMBER_REGEX = "(\\+375)(25|29|33|44)([1-9]){1}([0-9]){6}$";
     private static final String USERNAME_REGEX = "^(([a-zA-Z]{1})([a-zA-Z0-9]){2,18}([a-zA-z]))$";
     private static final String PASSWORD_REGEX = "^([a-zA-Z0-9]{4,20})$";
     private static final String DATE_REGEX = "[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])";

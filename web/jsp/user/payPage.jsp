@@ -34,7 +34,7 @@
       <input type="hidden" name="status" value="4">
       <div class="form-group">
         <label for="payOrder"><fmt:message key="label.payField"/></label>
-        <input type="text" class="form-control" name="cardNumber" required pattern="[0-9]{16}" id="payOrder" placeholder=<fmt:message key="label.payField"/> >
+        <input type="text" class="form-control" name="cardNumber" required pattern="[0-9]{16}" title="<fmt:message key="message.cardNumber"/>" id="payOrder" placeholder=<fmt:message key="label.payField"/> >
       </div>
       <h6 style="color: red">${warn}</h6>
       <button class="btn btn-lg btn-primary btn-block" type="submit"><fmt:message key="label.pay"/></button>

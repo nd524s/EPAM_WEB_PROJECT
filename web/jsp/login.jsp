@@ -30,12 +30,12 @@
 
       <div class="form-group">
         <label for="inputEmail"><fmt:message key="label.username"/></label>
-        <input type="text" class="form-control" name="username" value="${param.username}" required pattern="^(([a-zA-Z]{1})([a-zA-Z0-9]){2,18}([a-zA-z]))$" id="inputEmail" placeholder=<fmt:message key="label.username"/>>
+        <input type="text" class="form-control" name="username" value="${param.username}" required pattern="^(([a-zA-Z]{1})([a-zA-Z0-9]){2,18}([a-zA-z]))$" title="<fmt:message key="message.login"/>" id="inputEmail" placeholder=<fmt:message key="label.username"/>>
       </div>
 
       <div class="form-group">
         <label for="inputPassword"><fmt:message key="label.password"/></label>
-        <input type="password" class="form-control" name="password" value="${param.password}" required pattern="^([a-zA-Z0-9]{4,20})$" id="inputPassword" placeholder=<fmt:message key="label.password"/>>
+        <input type="password" class="form-control" name="password" value="${param.password}" required pattern="^([a-zA-Z0-9]{4,20})$" title="<fmt:message key="message.pass"/>" id="inputPassword" placeholder=<fmt:message key="label.password"/>>
       </div>
 
       <h6 style="color: red">${warn}</h6>
