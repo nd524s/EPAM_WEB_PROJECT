@@ -20,7 +20,7 @@ public class ActionFactory {
     /**
      * Modifies parameter "command" to Enum constants format
      * @param st parameter "command"
-     * @return modify string
+     * @return modified string
      */
     private String modifyString (String st) {
         char[] allLetters = st.toCharArray();

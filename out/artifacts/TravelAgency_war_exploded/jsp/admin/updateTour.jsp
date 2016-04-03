@@ -33,9 +33,6 @@
   <h1 align="center"><fmt:message key="label.editTour"/></h1>
   <h4 align="center" style="color: red">${warn}</h4>
   <h4 align="center" style="color: #0F28FF">${message}</h4>
-  <div class="row">
-    <button type="button" class="btn btn-primary" name="back" onclick="history.back(1)"><fmt:message key="label.back"/> </button>
-  </div>
   <div class="col-md-4 col-md-offset-4">
     <form name="addTour" action="/epam" method="post">
       <input type="hidden" name="command" value="updateTour">
